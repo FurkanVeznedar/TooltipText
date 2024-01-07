@@ -1,0 +1,62 @@
+First Step
+-> Upload the tooltipText.h and tooltipText.cpp file in GlistEngine
+->
+-> Dir: C:\dev\glist\GlistEngine\engine\ui
+->
+Second Step
+-> Add tooltipText.cpp to CMakeLists.txt file in GlistEngine
+->
+->########## CPP SOURCE FILES ##########
+-> set(SRC_FILES
+->	${PLUGIN_SRCS}
+->	${ENGINE_DIR}/graphics/particles/gFireworksParticles.cpp
+->	.
+->	.
+->	.
+-> 	${ENGINE_DIR}/ui/tooltipText.cpp
+->	.
+->	.
+->	.
+->  ${ENGINE_DIR}/graphics/posteffects/kerneleffects/gEdgeDetection.cpp
+->)
+->
+Third Step
+-> in gGUIForm.h file add tooltipText class as forward decleration as follows;
+->
+-> class tooltipText;
+->
+-> after that add one method as public and one vector as protcted member inside gGUIForm class as follow;
+->
+->public:
+-> void setTooltipText(tooltipText* tooltiptext);
+->
+->protected:
+-> std::vector<tooltipText*> vectooltiptext;
+->
+Fourth Step
+-> in gGUIForm.cpp class define the method which created in header file as follow;
+->
+-> void gGUIForm::setTooltipText(tooltipText *tooltiptext) {
+->	this->vectooltiptext.push_back(tooltiptext);
+-> }
+->
+-> after that in gGUIForm.cpp file, add following code to mouseMoved method
+->
+-> for(int i = 0; i < vectooltiptext.size(); i++) { vectooltiptext[i]->mouseMoved(x, y);}
+->
+Fifth Step
+-> in gGUIForm.cpp file add tooltipText class and adjust constructor and draw method as follows;
+->
+-> #include "tooltipText.h"
+->
+-> inside constructor add following code;
+->
+-> for(int i = 0; i < vectooltiptext.size(); i++) { vectooltiptext[i] = nullptr;}
+->
+-> inside draw method add following code;
+->
+-> for(int i = 0; i < vectooltiptext.size(); i++) {
+->	 vectooltiptext[i]->draw();
+-> }
+->
+DONE!! tooltipText objects can be used in GlistEngine, have fun!!
