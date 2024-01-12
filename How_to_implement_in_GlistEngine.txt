@@ -36,6 +36,8 @@ Third Step
 Fourth Step
 -> in gGUIForm.cpp class define the method which created in header file as follow;
 ->
+-> #include "tooltipText.h"
+->
 -> void gGUIForm::setTooltipText(tooltipText *tooltiptext) {
 ->	this->vectooltiptext.push_back(tooltiptext);
 -> }
@@ -45,7 +47,7 @@ Fourth Step
 -> for(int i = 0; i < vectooltiptext.size(); i++) { vectooltiptext[i]->mouseMoved(x, y);}
 ->
 Fifth Step
--> in gGUIForm.cpp file add tooltipText class and adjust constructor and draw method as follows;
+-> in gGUIFrame.cpp file add tooltipText class and adjust constructor and draw method as follows;
 ->
 -> #include "tooltipText.h"
 ->
